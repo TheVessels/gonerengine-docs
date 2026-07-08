@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="TargetMarker" inherits="Marker2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		A generic position marker with an ID system.
+	</brief_description>
+	<description>
+		[b]Note:[/b] Use more specialized [b]TargetMarker[/b] classes with their own isolated ID systems for more specific funcionalities
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_process">
+			<return type="void" />
+			<param index="0" name="_delta" type="float" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="marker_id" type="int" setter="" getter="">
+		</member>
+	</members>
+</class>

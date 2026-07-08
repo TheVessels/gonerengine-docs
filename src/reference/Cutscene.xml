@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Cutscene" inherits="RefCounted" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_run">
+			<return type="void" />
+			<description>
+				Main cutscene function. Meant to be overridden.
+			</description>
+		</method>
+		<method name="run" qualifiers="static">
+			<return type="Variant" />
+			<param index="0" name="cutscene" type="Cutscene" />
+			<description>
+			</description>
+		</method>
+		<method name="get_actor">
+			<return type="Actor" />
+			<param index="0" name="name" type="String" />
+			<description>
+			</description>
+		</method>
+		<method name="wait">
+			<return type="Variant" />
+			<param index="0" name="n_frames" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="wait_frames_exact">
+			<return type="Variant" />
+			<param index="0" name="n_frames" type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="wait_seconds">
+			<return type="Variant" />
+			<param index="0" name="seconds" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="set_party_movement">
+			<return type="Variant" />
+			<param index="0" name="can_move" type="bool" />
+			<description>
+			</description>
+		</method>
+	</methods>
+</class>

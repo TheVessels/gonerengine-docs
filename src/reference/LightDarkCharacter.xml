@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="LightDarkCharacter" inherits="Character" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		A Character with both Light World and Dark World sprites.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="get_animation">
+			<return type="SpriteFrames" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="dark_animations" type="SpriteFrames" setter="" getter="">
+		</member>
+		<member name="light_animations" type="SpriteFrames" setter="" getter="">
+		</member>
+	</members>
+</class>

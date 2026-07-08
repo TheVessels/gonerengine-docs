@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Bullet" inherits="Area2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_process">
+			<return type="void" />
+			<param index="0" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="_on_area_entered">
+			<return type="void" />
+			<param index="0" name="area" type="Area2D" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="velocity" type="Vector2" setter="" getter="" default="Vector2(0, 0)">
+		</member>
+		<member name="forwardsVelocity" type="Vector2" setter="" getter="" default="Vector2(0, 0)">
+		</member>
+		<member name="soulPosition" type="Variant" setter="" getter="" default="Vector2(0, 0)">
+		</member>
+		<member name="damage" type="Variant" setter="" getter="" default="17">
+		</member>
+	</members>
+</class>

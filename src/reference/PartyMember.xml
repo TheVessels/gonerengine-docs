@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="PartyMember" inherits="Actor" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		A party member. May be a playable character.
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_enter_tree">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_exit_tree">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="is_playable">
+			<return type="bool" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_process">
+			<return type="void" />
+			<param index="0" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="_physics_process">
+			<return type="void" />
+			<param index="0" name="_delta" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="party_member_process">
+			<return type="void" />
+			<param index="0" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="follow_main_character">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="move_playable_character">
+			<return type="Variant" />
+			<param index="0" name="dtmult" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="process_anim_state">
+			<return type="Variant" />
+			<param index="0" name="dtmult" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="get_walk_direction">
+			<return type="Vector2" />
+			<description>
+			</description>
+		</method>
+		<method name="get_walk_speed">
+			<return type="int" />
+			<description>
+			</description>
+		</method>
+		<method name="facing_same">
+			<return type="bool" />
+			<param index="0" name="dir" type="Vector2" />
+			<description>
+			</description>
+		</method>
+		<method name="calc_facing_from_dir">
+			<return type="int" enum="Enums.Facing" />
+			<param index="0" name="dir" type="Vector2" />
+			<description>
+			</description>
+		</method>
+		<method name="calc_animation_from_facing">
+			<return type="String" />
+			<param index="0" name="facing" type="int" enum="Enums.Facing" />
+			<description>
+			</description>
+		</method>
+		<method name="do_interact">
+			<return type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="play_animation_preserve">
+			<return type="Variant" />
+			<param index="0" name="animation" type="StringName" />
+			<description>
+			</description>
+		</method>
+		<method name="play_animation_load">
+			<return type="Variant" />
+			<param index="0" name="animation" type="StringName" />
+			<description>
+			</description>
+		</method>
+		<method name="play_animation_face">
+			<return type="Variant" />
+			<param index="0" name="animation" type="StringName" />
+			<description>
+			</description>
+		</method>
+		<method name="find_playable_character">
+			<return type="PartyMember" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="party_list" type="PartyMember[]" setter="" getter="" default="[...]">
+		</member>
+		<member name="running" type="bool" setter="" getter="">
+		</member>
+		<member name="runtimer" type="float" setter="" getter="" default="0.0">
+		</member>
+		<member name="time_since_walk" type="float" setter="" getter="">
+		</member>
+		<member name="facing" type="int" setter="" getter="" enum="Enums.Facing" default="3">
+		</member>
+		<member name="walking" type="bool" setter="" getter="" default="false">
+		</member>
+		<member name="anim_state" type="float" setter="" getter="" default="0.0">
+		</member>
+		<member name="walk_frame" type="int" setter="" getter="">
+		</member>
+		<member name="walk_progress" type="float" setter="" getter="">
+		</member>
+		<member name="follow_target" type="int" setter="" getter="" default="12">
+		</member>
+		<member name="last_positions" type="CircularQueue" setter="" getter="">
+		</member>
+	</members>
+	<constants>
+		<constant name="WALKRUN" value="0" enum="AnimState">
+		</constant>
+		<constant name="NOWALK_ANIM" value="1" enum="AnimState">
+		</constant>
+		<constant name="NOWALK_STALL" value="2" enum="AnimState">
+		</constant>
+		<constant name="STOP" value="3" enum="AnimState">
+		</constant>
+	</constants>
+</class>

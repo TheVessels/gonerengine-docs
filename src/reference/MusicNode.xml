@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="MusicNode" inherits="Node2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		A Node2D used for setting the music track in a [Room].
+	</brief_description>
+	<description>
+		[b]Note:[/b] This doesn't need to be set in every room. The music track set by a [b]MusicNode[/b] will stay until it is overridden by another [b]MusicNode[/b].
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="change_music" qualifiers="static">
+			<return type="Variant" />
+			<param index="0" name="music" type="Variant" />
+			<param index="1" name="gain" type="Variant" />
+			<param index="2" name="pitch" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="music" type="AudioStream" setter="" getter="">
+		</member>
+		<member name="pitch" type="float" setter="" getter="" default="1.0">
+		</member>
+		<member name="gain" type="float" setter="" getter="" default="1.0">
+		</member>
+	</members>
+</class>

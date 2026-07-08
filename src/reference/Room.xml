@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Room" inherits="Node2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		Base class for creating rooms in GonerEngine's custom room system
+	</brief_description>
+	<description>
+		When making a new room scene, set a [b]Room[/b] node as the root node.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="goto" qualifiers="static">
+			<return type="Variant" />
+			<param index="0" name="room" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="warp_party" qualifiers="static">
+			<return type="Variant" />
+			<param index="0" name="target_marker_id" type="Variant" />
+			<param index="1" name="player_facing" type="Variant" />
+			<description>
+			</description>
+		</method>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_process">
+			<return type="void" />
+			<param index="0" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="world_type" type="int" setter="" getter="" enum="&quot;scripts/autoloads/global.gd&quot;.WorldTypes">
+		</member>
+	</members>
+</class>

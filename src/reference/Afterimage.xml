@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="Afterimage" inherits="Sprite2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+	</brief_description>
+	<description>
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="with_fade_time" qualifiers="static">
+			<return type="Afterimage" />
+			<param index="0" name="time_unit" type="int" enum="Enums.TimeUnits" />
+			<param index="1" name="fade_time" type="float" />
+			<param index="2" name="starting_opacity" type="float" default="1.0" />
+			<param index="3" name="vel" type="Vector2" default="Vector2(0, 0)" />
+			<description>
+			</description>
+		</method>
+		<method name="_init">
+			<return type="void" />
+			<param index="0" name="fade_rate" type="float" />
+			<param index="1" name="starting_opacity" type="float" default="1.0" />
+			<param index="2" name="vel" type="Vector2" default="Vector2(0, 0)" />
+			<description>
+			</description>
+		</method>
+		<method name="_process">
+			<return type="void" />
+			<param index="0" name="delta" type="float" />
+			<description>
+			</description>
+		</method>
+		<method name="duplicate_node">
+			<return type="Variant" />
+			<param index="0" name="node" type="Node2D" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="opacity_rate" type="float" setter="" getter="">
+		</member>
+		<member name="velocity" type="Vector2" setter="" getter="">
+		</member>
+	</members>
+</class>

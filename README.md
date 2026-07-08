@@ -1,13 +1,4 @@
-# GonerEngine Documentation
-
-This is the documentation for [GonerEngine](https://github.com/The-Vessels/GonerEngine), a way to easily make Deltarune fangames in Godot.
-
-# Building
-
-```bash
-pip install -r requirements.txt
-make html
-```
-
-The HTML files will be in `build/html/`.
-
+# Welcome!
+This is the source code for the very famous, well-regarded, and mature
+Deltamodders Guide that you all know and love.
+Feel free to add any of your sweet wisdom with a Pull Request, stardust!

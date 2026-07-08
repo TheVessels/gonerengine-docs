@@ -1,5 +1,4 @@
-The Design Docs
-===============
+# The Design Docs
 
 These docs outline how GonerEngine should be designed.
 
@@ -10,12 +9,3 @@ We take inspiration from the existing "implementations" of DELTARUNE:
 - TLDR (independent GameMaker recreation)
 
 We also use the Godot design philosophy to make everything come together.
-
-..
-    .. toctree::
-       :maxdepth: 5
-       :name: des
-
-       people
-
-

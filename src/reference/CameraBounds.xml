@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="CameraBounds" inherits="Area2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		An Area2D for dynamically setting the limits of the WorldCamera for a room.
+	</brief_description>
+	<description>
+		Place in a [Room] to set the limits for the game's main camera for that room. 
+[b]Note:[/b] It is recommended to place this at/near the start of the room's SceneTree so that it stays out of the way.
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="collision_shape_2d" type="CollisionShape2D" setter="" getter="" default="&lt;unknown&gt;">
+		</member>
+		<member name="tl_corner" type="Vector2" setter="" getter="">
+		</member>
+		<member name="br_corner" type="Vector2" setter="" getter="">
+		</member>
+		<member name="rect" type="Rect2" setter="" getter="">
+		</member>
+	</members>
+</class>

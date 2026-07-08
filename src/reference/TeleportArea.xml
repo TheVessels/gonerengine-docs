@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<class name="TeleportArea" inherits="Area2D" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/godotengine/godot/master/doc/class.xsd">
+	<brief_description>
+		An Area2D for teleporting to another room.
+	</brief_description>
+	<description>
+		[b]Note:[/b] Use with [TargetMarkerDest] to set destination position of the player
+	</description>
+	<tutorials>
+	</tutorials>
+	<methods>
+		<method name="_ready">
+			<return type="void" />
+			<description>
+			</description>
+		</method>
+		<method name="_on_body_entered">
+			<return type="void" />
+			<param index="0" name="body" type="Node2D" />
+			<description>
+			</description>
+		</method>
+	</methods>
+	<members>
+		<member name="target_scene" type="Variant" setter="" getter="">
+		</member>
+		<member name="target_marker_id" type="int" setter="" getter="">
+		</member>
+		<member name="player_facing" type="int" setter="" getter="" enum="Enums.Facing" default="3">
+		</member>
+	</members>
+</class>
