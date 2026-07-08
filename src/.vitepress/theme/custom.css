@@ -200,15 +200,15 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-c-bg: #2E3236;
-  --vp-c-bg-alt: var(--vp-c-gray-3);
+  --vp-c-bg: #fafafa;
+  --vp-c-bg-alt: #dedede;
   --vp-c-bg-elv: var(--c_white);
   --vp-c-bg-soft: var(--vp-c-gray-3);
 }
 
 .dark {
   --vp-c-bg: #2E3236;
-  --vp-c-bg-alt: #202326;
+  --vp-c-bg-alt: #25282b;
   --vp-c-bg-elv: #202127;
   --vp-c-bg-soft: #202127;
 }
@@ -227,8 +227,8 @@
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-c-border: #c2c2c4;
-  --vp-c-divider: #e2e2e3;
+  --vp-c-border: #555555;
+  --vp-c-divider: #555555;
   --vp-c-gutter: #e2e2e3;
 }
 
@@ -621,8 +621,8 @@ body {
 
 :root {
   --vp-sidebar-width: 272px;
-  /* --vp-sidebar-bg-color: var(--vp-c-bg-alt); */
-  --vp-sidebar-bg-color: #25282b;
+  --vp-sidebar-bg-color: var(--vp-c-bg-alt);
+  /* --vp-sidebar-bg-color: #25282b; */
 }
 
 .text {
