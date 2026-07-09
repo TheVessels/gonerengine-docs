@@ -15,16 +15,18 @@ Mustache.escape = (str) => str;
 const xmlPath = "src/reference";
 const outPath = "src/reference";
 const outPathNoSrc = outPath.replace("src/", "/");
-const godotXmlPath = "godot-docs/doc/classes";
+// const godotXmlPath = "godot-docs/doc/classes";
 
 const isXml = filename => filename.endsWith(".xml");
 const xmlFilenames = fs.readdirSync(xmlPath).filter(isXml);
-const godotXmlFilenames = fs.existsSync(godotXmlPath) ? fs.readdirSync(godotXmlPath).filter(isXml) : [];
+// const godotXmlFilenames = fs.existsSync(godotXmlPath) ? fs.readdirSync(godotXmlPath).filter(isXml) : [];
 const godotDocsUrlStart = "https://docs.godotengine.org/en/stable/classes/"
 
 // Is this class name a standard Godot class?
 function isGodotClass(className) {
-    return godotXmlFilenames.includes(className + ".xml");
+    // return godotXmlFilenames.includes(className + ".xml");
+    // Let's just assume that if it isn't a GonerEngine class, it's a Godot class, for now.
+    return true;
 }
 // Is this class name a standard GonerEngine class?
 function isGonerEngineClass(className) {
@@ -33,10 +35,10 @@ function isGonerEngineClass(className) {
 
 // Returns null if the class name couldn't be found.
 function findClassUrl(className) {
-    if (isGodotClass(className)) {
-        return path.join(godotDocsUrlStart, `class_${className.toLowerCase()}.html`);
-    } else if (isGonerEngineClass(className)) {
+    if (isGonerEngineClass(className)) {
         return path.join(outPathNoSrc, className);
+    } else if (isGodotClass(className)) {
+        return path.join(godotDocsUrlStart, `class_${className.toLowerCase()}.html`);
     } else {
         return null;
     }
