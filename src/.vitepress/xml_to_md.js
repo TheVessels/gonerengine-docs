@@ -22,6 +22,7 @@ const xmlFilenames = fs.readdirSync(xmlPath).filter(isXml);
 // const godotXmlFilenames = fs.existsSync(godotXmlPath) ? fs.readdirSync(godotXmlPath).filter(isXml) : [];
 const godotDocsUrlStart = "https://docs.godotengine.org/en/stable/classes/"
 const ignoreTypes = ["void"];
+const ignoreMethods = ["_ready", "_process", "_physics_process", "_draw", "_input", "_gui_input"];
 
 // Is this class name a standard Godot class?
 function isGodotClass(className) {
@@ -142,6 +143,7 @@ function parseMethods(methods) {
 
     for (const child of methods.children) {
         if (child.type != "element") continue;
+        if (ignoreMethods.includes(child.attributes.name)) continue;
         arr.push(parseMethod(child));
     }
 

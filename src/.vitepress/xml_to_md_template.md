@@ -16,8 +16,7 @@ class {{name}} extends {{inherits}}
 ## Methods
 
 {{#methods}}
-### {{#static}}static {{/static}}{{return_type}} `{{name}}`({{#params}}{{type}} {{name}}{{#more}}, {{/more}}{{/params}})
-
+### {{#static}}static {{/static}}func `{{name}}`({{#params}}{{name}}: {{type}}{{#more}}, {{/more}}{{/params}}) -> {{return_type}}
 {{description}}
 
 {{/methods}}
