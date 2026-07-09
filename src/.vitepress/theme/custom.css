@@ -596,6 +596,10 @@ body {
   --vp-nav-logo-height: 40px;
 }
 
+.VPNavBarSearchButton {
+  background-color: var(--vp-c-bg) !important;
+}
+
 .hide-nav {
   --vp-nav-height: 0px;
 }

@@ -21,8 +21,19 @@ const config = defineConfig({
       { icon: "discord", link: "https://discord.gg/2Ea2bpQGq5" },
     ],
     editLink: {
-      pattern: "https://github.com/TheVessels/gonerengine-docs/edit/master/src/:path",
+      pattern:
+        "https://github.com/TheVessels/gonerengine-docs/edit/master/src/:path",
       text: "Edit this page on GitHub",
+    },
+    lastUpdated: {
+      text: "Updated at",
+      formatOptions: {
+        dateStyle: "full",
+        timeStyle: "medium",
+      },
+    },
+    search: {
+      provider: "local",
     },
   },
 });
