@@ -12,6 +12,12 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  GONER_URL: https://github.com/TheVessels/GonerEngine/archive/refs/heads/gaster.zip
+  GONER_DIR: GonerEngine-gaster
+  GODOT_EXEC: ./Godot_v4.7-stable_linux.x86_64
+  GODOT_URL: https://downloads.godotengine.org/?version=4.7&flavor=stable&slug=linux.x86_64.zip&platform=linux.64
+
 jobs:
   build:
     concurrency: ci-${{ github.ref }}
@@ -20,6 +26,20 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+      - name: Download GonerEngine
+        run: |
+          curl -L "${{ env.GONER_URL }}" > repo.zip
+          unzip repo.zip
+          mv ${{ GONER_DIR }} GonerEngine
+          rm repo.zip
+      - name: Download Godot
+        run: |
+          curl -L "${{ env.GODOT_URL }}" > godot.zip
+          unzip godot.zip
+          rm godot.zip
+      - name: Generate reference XML
+        run: |
+          ${{ env.GODOT_EXEC }} --path GonerEngine --doctool $PWD/src/reference --gdscript-docs res://scripts/classes
       - name: Install dependencies
         run: |
           npm i
