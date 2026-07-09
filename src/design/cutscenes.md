@@ -8,7 +8,7 @@ In Kristal and in GonerEngine, cutscenes are coroutines.
 This is because in Lua and Godot, functions can be paused in
 the middle, so the cutscene functions can be executed when
 the corresponding part in the cutscene happens.
-I believe this way is much more intuitive.
+We believe this way is much more intuitive.
 
 ## Cutscene Actor Variables
 
