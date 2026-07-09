@@ -713,6 +713,7 @@ body {
   --vp-local-search-highlight-text: var(--vp-c-neutral-inverse);
 }
 
-/* .layout {
-  background-color: #202326;
-} */
+/* Uppercase sidebar headers. */
+.VPSidebarItem h2.text {
+  text-transform: uppercase;
+}

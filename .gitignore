@@ -2,3 +2,4 @@ node_modules
 package-lock.json
 src/.vitepress/cache
 src/.vitepress/dist
+src/reference/*.md

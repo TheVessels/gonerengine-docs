@@ -6,15 +6,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "vitepress dev src",
+    "prebuild": "node src/.vitepress/xml_to_md.js",
     "build": "vitepress build src",
     "preview": "vitepress preview src"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "devDependencies": {
+    "@types/jsdom": "^28.0.3",
     "vitepress": "^2.0.0-alpha.15",
     "vitepress-sidebar": "^1.33.1"
+  },
+  "dependencies": {
+    "@rgrove/parse-xml": "^4.2.1",
+    "jsdom": "^29.1.1",
+    "mustache": "^4.2.0"
   }
 }
