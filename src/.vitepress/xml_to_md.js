@@ -21,6 +21,7 @@ const isXml = filename => filename.endsWith(".xml");
 const xmlFilenames = fs.readdirSync(xmlPath).filter(isXml);
 // const godotXmlFilenames = fs.existsSync(godotXmlPath) ? fs.readdirSync(godotXmlPath).filter(isXml) : [];
 const godotDocsUrlStart = "https://docs.godotengine.org/en/stable/classes/"
+const ignoreTypes = ["void"];
 
 // Is this class name a standard Godot class?
 function isGodotClass(className) {
@@ -35,10 +36,12 @@ function isGonerEngineClass(className) {
 
 // Returns null if the class name couldn't be found.
 function findClassUrl(className) {
-    if (isGonerEngineClass(className)) {
+    if (ignoreTypes.includes(className)) {
+        return null;
+    } else if (isGonerEngineClass(className)) {
         return path.join(outPathNoSrc, className);
     } else if (isGodotClass(className)) {
-        return path.join(godotDocsUrlStart, `class_${className.toLowerCase()}.html`);
+        return godotDocsUrlStart + `class_${className.toLowerCase()}.html`;
     } else {
         return null;
     }

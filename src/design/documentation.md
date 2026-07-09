@@ -13,8 +13,7 @@ We are also trying to make an API reference for GonerEngine.
 The commands to do this are:
 
 ```bash
-mkdir -p ~/gonerengine-docs/godot-docs ~/gonerengine-docs/src/reference
-godot --headless --doctool ~/gonerengine-docs/godot-docs
+mkdir -p ~/gonerengine-docs/src/reference
 godot --headless --path ~/GonerEngine --import
 godot --headless --path ~/GonerEngine --doctool ~/gonerengine-docs/src/reference --gdscript-docs res://scripts/classes/
 npm run prebuild
