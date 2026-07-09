@@ -10,16 +10,24 @@
 	</tutorials>
 	<methods>
 		<method name="goto" qualifiers="static">
-			<return type="Variant" />
-			<param index="0" name="room" type="Variant" />
+			<return type="void" />
+			<param index="0" name="room" type="PackedScene" />
 			<description>
+				Change the room to a specified loaded [param room] resource
+[codeblock]
+Room.goto(load("res://scenes/overworld/rooms/hometown.tscn"))
+[/codeblock]
 			</description>
 		</method>
 		<method name="warp_party" qualifiers="static">
-			<return type="Variant" />
-			<param index="0" name="target_marker_id" type="Variant" />
-			<param index="1" name="player_facing" type="Variant" />
+			<return type="void" />
+			<param index="0" name="target_marker_id" type="int" />
+			<param index="1" name="facing" type="int" enum="Enums.Facing" />
 			<description>
+				Set all your [PartyMember]'s positions to a [TargetMarkerDest] with a given [param target_marker_id] and set their [param facing] directions.
+[codeblock]
+Room.warp_party(1, Enums.Facing.LEFT)
+[/codeblock]
 			</description>
 		</method>
 		<method name="_ready">

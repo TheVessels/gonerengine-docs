@@ -18,6 +18,8 @@ class `{{name}}` extends `{{inherits}}`
 {{#methods}}
 ### {{#static}}static {{/static}}{{return_type}} `{{name}}`({{#params}}{{type}} {{name}}{{#more}}, {{/more}}{{/params}})
 
+{{description}}
+
 {{/methods}}
 
 {{/has_methods}}

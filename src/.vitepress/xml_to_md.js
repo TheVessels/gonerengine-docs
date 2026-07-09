@@ -9,6 +9,11 @@ import { parseXml, XmlElement } from "@rgrove/parse-xml";
 import Mustache from "mustache";
 import { parse } from "node:path";
 
+let xmlFilenames = [];
+
+// Disable escaping
+Mustache.escape = (str) => str;
+
 // const parseFromString = DomParser.parseFromString;
 
 /**
@@ -19,8 +24,48 @@ function stripHeader(xmlStr) {
     return xmlStr.slice(xmlStr.indexOf('?>') + 2);
 }
 
+function processRefTags(code) {
+    let position = 0;
+    while (true) {
+        let leftIndex = code.indexOf("[", position);
+        if (leftIndex == -1) break;
+        let rightIndex = code.indexOf("]", leftIndex);
+        if (rightIndex == -1) break;
+        position = rightIndex + 1;
+
+        let firstTagLetter = code[leftIndex + 1];
+        if (firstTagLetter == "/") continue; // it's a closing tag.
+        // Let's only allow tags that start with an uppercase letter, for now.
+        if (firstTagLetter.toUpperCase() != firstTagLetter) continue;
+
+        let tagContent = code.slice(leftIndex + 1, rightIndex);
+        // Check if this is a class with a documentation page
+        if (!xmlFilenames.includes(tagContent + ".xml")) continue;
+
+        let url = `/reference/${tagContent}.md`
+
+        // Add the url right after the tag.
+        code = code.slice(0, rightIndex + 1) + `(${url})` + code.slice(rightIndex + 1);
+    }
+
+    return code;
+}
+
+function parseBBCode(code) {
+    code = code.replaceAll("[i]", "**");
+    code = code.replaceAll("[/i]", "**");
+    code = code.replaceAll("[b]", "**");
+    code = code.replaceAll("[/b]", "**");
+    code = code.replaceAll("[code]", "`");
+    code = code.replaceAll("[/code]", "`");
+    code = code.replaceAll("[codeblock]", "```gdscript");
+    code = code.replaceAll("[/codeblock]", "```");
+    code = processRefTags(code);
+    return code;
+}
+
 function getText(elem) {
-    return elem.children[0].text.trim();
+    return parseBBCode(elem.children[0].text.trim());
 }
 
 
@@ -110,11 +155,10 @@ function xmlToMarkdown(xmlStr, template) {
 
 if (fs.existsSync("src/reference")) {
     const template = fs.readFileSync("src/.vitepress/xml_to_md_template.md").toString();
+    xmlFilenames = fs.readdirSync("src/reference").filter(filename => filename.endsWith(".xml"));
 
-    for (const filename of fs.readdirSync("src/reference")) {
-        console.log("FILENAME: " + filename);
-
-        if (!filename.endsWith(".xml")) continue;
+    for (const filename of xmlFilenames) {
+        console.log("PROCESSING FILE: " + filename);
 
         const inputName = path.join("src/reference", filename);
         const outputName = path.join("src/reference", path.parse(filename).name + ".md");

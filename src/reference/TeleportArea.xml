@@ -22,7 +22,7 @@
 		</method>
 	</methods>
 	<members>
-		<member name="target_scene" type="Variant" setter="" getter="">
+		<member name="target_scene" type="String" setter="" getter="">
 		</member>
 		<member name="target_marker_id" type="int" setter="" getter="">
 		</member>

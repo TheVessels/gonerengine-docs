@@ -11,6 +11,7 @@ const config = defineConfig({
   markdown: {
     languageAlias: {
       gml: "python",
+      gdscript: "python",
     },
   },
   themeConfig: {

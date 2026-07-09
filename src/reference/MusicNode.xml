@@ -10,11 +10,16 @@
 	</tutorials>
 	<methods>
 		<method name="change_music" qualifiers="static">
-			<return type="Variant" />
-			<param index="0" name="music" type="Variant" />
-			<param index="1" name="gain" type="Variant" />
-			<param index="2" name="pitch" type="Variant" />
+			<return type="void" />
+			<param index="0" name="music" type="AudioStream" />
+			<param index="1" name="gain" type="float" default="1.0" />
+			<param index="2" name="pitch" type="float" default="1.0" />
 			<description>
+				Changes the global music playing to the given loaded [param music] resource with the given [param gain] and [param pitch] 
+[b]Note:[/b] [param gain] is in linear energy.
+[codeblock]
+MusicNode.change_music(load("res://music/mus_intro_test.ogg"), 0.75, 1.17)
+[/codeblock]
 			</description>
 		</method>
 		<method name="_ready">
