@@ -112,6 +112,8 @@ if (fs.existsSync("src/reference")) {
     const template = fs.readFileSync("src/.vitepress/xml_to_md_template.md").toString();
 
     for (const filename of fs.readdirSync("src/reference")) {
+        console.log("FILENAME: " + filename);
+
         if (!filename.endsWith(".xml")) continue;
 
         const inputName = path.join("src/reference", filename);

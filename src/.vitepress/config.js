@@ -19,6 +19,7 @@ const config = defineConfig({
       // You can add any icon from simple-icons (https://simpleicons.org/):
       { icon: "github", link: "https://github.com/TheVessels/GonerEngine" },
       { icon: "discord", link: "https://discord.gg/2Ea2bpQGq5" },
+      { icon: "youtube", link: "https://youtube.com/@vesseldevs" },
     ],
     editLink: {
       pattern:
