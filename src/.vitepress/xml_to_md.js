@@ -9,17 +9,48 @@ import { parseXml, XmlElement } from "@rgrove/parse-xml";
 import Mustache from "mustache";
 import { parse } from "node:path";
 
-let xmlFilenames = [];
-
 // Disable escaping
 Mustache.escape = (str) => str;
 
-// const parseFromString = DomParser.parseFromString;
+const xmlPath = "src/reference";
+const outPath = "src/reference";
+const outPathNoSrc = outPath.replace("src/", "/");
+const godotXmlPath = "godot-docs/doc/classes";
 
-/**
- * 
- * @param {string} xmlStr 
- */
+const isXml = filename => filename.endsWith(".xml");
+const xmlFilenames = fs.readdirSync(xmlPath).filter(isXml);
+const godotXmlFilenames = fs.existsSync(godotXmlPath) ? fs.readdirSync(godotXmlPath).filter(isXml) : [];
+const godotDocsUrlStart = "https://docs.godotengine.org/en/stable/classes/"
+
+// Is this class name a standard Godot class?
+function isGodotClass(className) {
+    return godotXmlFilenames.includes(className + ".xml");
+}
+// Is this class name a standard GonerEngine class?
+function isGonerEngineClass(className) {
+    return xmlFilenames.includes(className + ".xml");
+}
+
+// Returns null if the class name couldn't be found.
+function findClassUrl(className) {
+    if (isGodotClass(className)) {
+        return path.join(godotDocsUrlStart, `class_${className.toLowerCase()}.html`);
+    } else if (isGonerEngineClass(className)) {
+        return path.join(outPathNoSrc, className);
+    } else {
+        return null;
+    }
+}
+// Replaces the class name with a link, if a corresponding URL exists.
+function findClass(className) {
+    const classUrl = findClassUrl(className);
+    if (classUrl == null) {
+        return className;
+    } else {
+        return `[${className}](${classUrl})`
+    }
+}
+
 function stripHeader(xmlStr) {
     return xmlStr.slice(xmlStr.indexOf('?>') + 2);
 }
@@ -27,25 +58,25 @@ function stripHeader(xmlStr) {
 function processRefTags(code) {
     let position = 0;
     while (true) {
-        let leftIndex = code.indexOf("[", position);
+        const leftIndex = code.indexOf("[", position);
         if (leftIndex == -1) break;
-        let rightIndex = code.indexOf("]", leftIndex);
+        const rightIndex = code.indexOf("]", leftIndex);
         if (rightIndex == -1) break;
         position = rightIndex + 1;
 
-        let firstTagLetter = code[leftIndex + 1];
+        const firstTagLetter = code[leftIndex + 1];
         if (firstTagLetter == "/") continue; // it's a closing tag.
         // Let's only allow tags that start with an uppercase letter, for now.
         if (firstTagLetter.toUpperCase() != firstTagLetter) continue;
 
-        let tagContent = code.slice(leftIndex + 1, rightIndex);
-        // Check if this is a class with a documentation page
-        if (!xmlFilenames.includes(tagContent + ".xml")) continue;
+        const tagContent = code.slice(leftIndex + 1, rightIndex);
 
-        let url = `/reference/${tagContent}.md`
+        // Check if this is a class with a documentation page
+        const classUrl = findClassUrl(tagContent);
+        if (classUrl == null) continue;
 
         // Add the url right after the tag.
-        code = code.slice(0, rightIndex + 1) + `(${url})` + code.slice(rightIndex + 1);
+        code = code.slice(0, rightIndex + 1) + `(${classUrl})` + code.slice(rightIndex + 1);
     }
 
     return code;
@@ -83,12 +114,12 @@ function parseMethod(method) {
                 obj.description = getText(child);
                 break;
             case "return":
-                obj.return_type = child.attributes.type;
+                obj.return_type = findClass(child.attributes.type);
             case "param": {
                 let param = {};
                 let index = parseInt(child.attributes.index);
                 param.name = child.attributes.name;
-                param.type = child.attributes.type;
+                param.type = findClass(child.attributes.type);
                 obj.params[index] = param;
                 break;
             }
@@ -124,7 +155,7 @@ function xmlToMarkdown(xmlStr, template) {
     const view = {};
 
     view.name = clas.attributes.name;
-    view.inherits = clas.attributes.inherits;
+    view.inherits = findClass(clas.attributes.inherits);
 
     for (const child of clas.children) {
         if (child.type != "element") continue;
@@ -153,17 +184,18 @@ function xmlToMarkdown(xmlStr, template) {
     return Mustache.render(template, view);
 }
 
-if (fs.existsSync("src/reference")) {
+function main() {
     const template = fs.readFileSync("src/.vitepress/xml_to_md_template.md").toString();
-    xmlFilenames = fs.readdirSync("src/reference").filter(filename => filename.endsWith(".xml"));
 
     for (const filename of xmlFilenames) {
         console.log("PROCESSING FILE: " + filename);
 
-        const inputName = path.join("src/reference", filename);
-        const outputName = path.join("src/reference", path.parse(filename).name + ".md");
+        const inputName = path.join(xmlPath, filename);
+        const outputName = path.join(outPath, path.parse(filename).name + ".md");
 
         const xml = fs.readFileSync(inputName).toString();
         fs.writeFileSync(outputName, xmlToMarkdown(xml, template));
     }
 }
+
+main();

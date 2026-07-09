@@ -1,6 +1,6 @@
 # {{name}}
 
-class `{{name}}` extends `{{inherits}}`
+class {{name}} extends {{inherits}}
 
 {{#brief_description}}
 ## Brief Description
