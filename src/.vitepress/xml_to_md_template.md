@@ -3,12 +3,11 @@
 class {{name}} extends {{inherits}}
 
 {{#brief_description}}
-## Brief Description
+## Description
 {{.}}
 {{/brief_description}}
 
 {{#description}}
-## Description
 {{.}}
 {{/description}}
 
@@ -16,7 +15,7 @@ class {{name}} extends {{inherits}}
 ## Methods
 
 {{#methods}}
-### {{#static}}static {{/static}}func `{{name}}`({{#params}}{{name}}: {{type}}{{#more}}, {{/more}}{{/params}}) -> {{return_type}}
+### {{#static}}static {{/static}}func `{{name}}`({{#params}}{{name}}: {{#enum}}{{enum}}{{/enum}}{{^enum}}{{type}}{{/enum}}{{#more}}, {{/more}}{{/params}}) -> {{return_type}}
 {{description}}
 
 {{/methods}}

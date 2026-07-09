@@ -126,6 +126,7 @@ function parseMethod(method) {
                 let index = parseInt(child.attributes.index);
                 param.name = child.attributes.name;
                 param.type = findClass(child.attributes.type);
+                param.enum = child.attributes.enum;
                 obj.params[index] = param;
                 break;
             }
