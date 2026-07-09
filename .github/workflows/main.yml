@@ -37,6 +37,7 @@ jobs:
           rm godot.zip
       - name: Generate reference XML
         run: |
+          "$GODOT_EXEC" --path GonerEngine --import
           "$GODOT_EXEC" --path GonerEngine --doctool $PWD/src/reference --gdscript-docs res://scripts/classes
       - name: Install dependencies
         run: |
