@@ -7,16 +7,16 @@ on:
     branches: [ "master" ]
   workflow_dispatch:
 
+env:
+  GONER_URL: "https://github.com/TheVessels/GonerEngine/archive/refs/heads/gaster.zip"
+  GONER_DIR: "GonerEngine-gaster"
+  GODOT_EXEC: "./Godot_v4.7-stable_linux.x86_64"
+  GODOT_URL: "https://downloads.godotengine.org/?version=4.7&flavor=stable&slug=linux.x86_64.zip&platform=linux.64"
+
 permissions:
   contents: read
   pages: write
   id-token: write
-
-env:
-  GONER_URL: https://github.com/TheVessels/GonerEngine/archive/refs/heads/gaster.zip
-  GONER_DIR: GonerEngine-gaster
-  GODOT_EXEC: ./Godot_v4.7-stable_linux.x86_64
-  GODOT_URL: https://downloads.godotengine.org/?version=4.7&flavor=stable&slug=linux.x86_64.zip&platform=linux.64
 
 jobs:
   build:
