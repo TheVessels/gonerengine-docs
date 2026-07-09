@@ -10,7 +10,21 @@ That was why we switched to VitePress.
 ## Making API Reference
 
 We are also trying to make an API reference for GonerEngine.
-The command to do this is: `godot --doctool ~/deltamodders-guide/src/reference --gdscript-docs res://scripts/classes/`.
+The commands to do this are:
+
+```bash
+mkdir -p ~/gonerengine-docs/godot-docs ~/gonerengine-docs/src/reference
+godot --headless --doctool ~/gonerengine-docs/godot-docs
+godot --headless --path ~/GonerEngine --import
+godot --headless --path ~/GonerEngine --doctool ~/gonerengine-docs/src/reference --gdscript-docs res://scripts/classes/
+npm run prebuild
+```
+
 (You could also do `res://scripts/` instead to make docs for all scripts.)
-The big problem is that all of these docs are in XML.
-We need to write a script to generate HTML or Markdown from the XML files.
+
+All of these docs are in XML,
+so we wrote a script to generate Markdown from the XML files.
+
+`npm run prebuild` runs the script `src/.vitepress/xml_to_md.js` which converts the XML documentation
+to Markdown. It uses `src/.vitepress/xml_to_md_template.md` as a template for the generated Markdown files.
+
