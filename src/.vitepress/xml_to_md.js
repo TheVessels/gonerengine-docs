@@ -40,7 +40,8 @@ function findClassUrl(className) {
     if (ignoreTypes.includes(className)) {
         return null;
     } else if (isGonerEngineClass(className)) {
-        return path.join(outPathNoSrc, className);
+        //return path.join(outPathNoSrc, className);
+        return path.join("/", className);
     } else if (isGodotClass(className)) {
         return godotDocsUrlStart + `class_${className.toLowerCase()}.html`;
     } else {
