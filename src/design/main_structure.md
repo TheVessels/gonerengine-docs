@@ -19,7 +19,7 @@ This is the space in the scene tree between the **Main** scene and **GameRoot** 
 These are the entire point of **BorderAndGame**. These are the nodes where all the game borders are rendered.
 **BorderTexture**, as the name implies, is where the texture for the border is. **BorderPrevTexture** is where the "previous" border texture is.
 As in, when changing the border, it is the node where the border being replaced goes before fading away and being fully replaced
-by the border now set in the BorderTexture node (refer to [BorderNode](..\reference\BorderNode)).
+by the border now set in the BorderTexture node (refer to [BorderNode](\reference\BorderNode)).
 
 ***Note:** The actual logic for all of this is in the Main scene's root node.*
 
