@@ -403,6 +403,10 @@
  * Layouts
  * -------------------------------------------------------------------------- */
 
+html {
+  scroll-behavior: smooth;
+}
+
 :root {
   --vp-layout-max-width: 1440px;
 }
