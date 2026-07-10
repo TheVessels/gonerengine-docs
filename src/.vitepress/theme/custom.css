@@ -420,7 +420,7 @@ body {
 }
 
 .vp-doc h3 code {
-  color: var(--vp-c-brand-2);
+  color: var(--vp-c-text-1);
 }
 
 .vp-doc hr {
