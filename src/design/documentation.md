@@ -12,6 +12,8 @@ That was why we switched to VitePress.
 We are also trying to make an API reference for GonerEngine.
 The commands to do this are:
 
+This is a [goofy link](/reference/BorderNode).
+
 ```bash
 mkdir -p ~/gonerengine-docs/src/reference
 godot --headless --path ~/GonerEngine --import

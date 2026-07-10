@@ -3,7 +3,7 @@
 // Converts XML to Markdown.
 
 import * as fs from "node:fs";
-import * as path from "node:path";
+import * as path from "node:path/posix";
 // import { JSDOM } from "jsdom";
 import { parseXml, XmlElement } from "@rgrove/parse-xml";
 import Mustache from "mustache";
