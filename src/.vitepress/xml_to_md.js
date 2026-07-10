@@ -95,7 +95,7 @@ function processSpecificRefTag(tagType, tagContent) {
         const methodId = findMethodId(className, methodName);
         if (classUrl == null || methodId == null) return `${methodName}`;
 
-        return `[${methodName}](${classUrl}#${methodId})`
+        return `[${tagContent}](${classUrl}#${methodId})`
     } else {
         // Just return the content for now.
         return tagContent;
@@ -147,6 +147,7 @@ function parseBBCode(code) {
     code = code.replaceAll("[/code]", "`");
     code = code.replaceAll("[codeblock]", "```gdscript");
     code = code.replaceAll("[/codeblock]", "```");
+    code = code.replaceAll("[br]", "<br>");
     code = processRefTags(code);
     return code;
 }
