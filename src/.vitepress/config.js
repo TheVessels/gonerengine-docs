@@ -3,7 +3,7 @@ import { withSidebar } from "vitepress-sidebar";
 
 const config = defineConfig({
   title: "GonerEngine Docs",
-  description: "An in-development modders guide",
+  description: "An in-development GonerEngine guide",
   base: "/gonerengine-docs/",
   vite: {
     configFile: "vite.config.js",
@@ -13,6 +13,7 @@ const config = defineConfig({
       gml: "python",
       gdscript: "python",
     },
+    theme: "gruvbox-dark-hard",
   },
   themeConfig: {
     logo: "/img/logo.png",

@@ -415,6 +415,18 @@ body {
   font-size: 1rem !important;
 }
 
+.vp-doc h3 {
+  color: var(--vp-c-text-2);
+}
+
+.vp-doc h3 code {
+  color: var(--vp-c-brand-2);
+}
+
+.vp-doc hr {
+  border-color: var(--vp-c-gutter);
+}
+
 /**
  * Component: Header Anchor
  * -------------------------------------------------------------------------- */
