@@ -427,6 +427,22 @@ body {
   border-color: var(--vp-c-gutter);
 }
 
+.outline-title {
+  font-size: 16px !important;
+}
+
+.outline-link {
+  font-size: 16px !important;
+}
+
+.edit-link a {
+  font-size: 16px !important;
+}
+
+.last-updated p {
+  font-size: 16px !important;
+}
+
 /**
  * Component: Header Anchor
  * -------------------------------------------------------------------------- */
