@@ -162,6 +162,7 @@ function getText(elem) {
 function parseMethod(method) {
     const obj = {}
     obj.name = method.attributes.name
+    obj.method_id = "method-" + method.attributes.name.replaceAll("_", "-");
     obj.static = method.attributes.qualifiers?.includes("static");
     obj.params = [];
     
