@@ -15,6 +15,7 @@ class {{name}} extends {{inherits}}
 ## Methods
 
 {{#methods}}
+<a id="method-{{name}}"></a>
 ### {{#static}}static {{/static}}func `{{name}}`({{#params}}{{name}}: {{#enum}}{{enum}}{{/enum}}{{^enum}}{{type}}{{/enum}}{{#more}}, {{/more}}{{/params}}) -> {{return_type}}
 {{description}}
 ***

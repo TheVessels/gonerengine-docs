@@ -50,4 +50,7 @@ const sidebarConfig = {
   includeFolderIndexFile: true,
 };
 
+function x() {
+}
+
 export default withSidebar(config, sidebarConfig);

@@ -22,7 +22,9 @@ const xmlFilenames = fs.readdirSync(xmlPath).filter(isXml);
 // const godotXmlFilenames = fs.existsSync(godotXmlPath) ? fs.readdirSync(godotXmlPath).filter(isXml) : [];
 const godotDocsUrlStart = "https://docs.godotengine.org/en/stable/classes/"
 const ignoreTypes = ["void"];
-const ignoreMethods = ["_ready", "_process", "_physics_process", "_draw", "_input", "_gui_input"];
+const ignoreMethods = [
+    "_ready", "_process", "_physics_process", "_draw", "_input", "_gui_input", "_enter_tree", "_exit_tree"
+];
 
 // Is this class name a standard Godot class?
 function isGodotClass(className) {
@@ -35,13 +37,25 @@ function isGonerEngineClass(className) {
     return xmlFilenames.includes(className + ".xml");
 }
 
+// returns "godot", "gonerengine", or "none"
+function getClassType(className) {
+    if (ignoreTypes.includes(className)) {
+        return "none";
+    } else if (isGonerEngineClass(className)) {
+        return "goner";
+    } else if (isGodotClass(className)) {
+        return "godot";
+    } else {
+        return "none";
+    }
+}
+
 // Returns null if the class name couldn't be found.
 function findClassUrl(className) {
-    if (ignoreTypes.includes(className)) {
-        return null;
-    } else if (isGonerEngineClass(className)) {
+    const classType = getClassType(className);
+    if (classType == "goner") {
         return path.join(outPathNoSrc, className);
-    } else if (isGodotClass(className)) {
+    } else if (classType == "godot") {
         return godotDocsUrlStart + `class_${className.toLowerCase()}.html`;
     } else {
         return null;
@@ -57,8 +71,35 @@ function findClass(className) {
     }
 }
 
+function findMethodId(className, methodName) {
+    const classType = getClassType(className);
+
+    if (classType == "goner") {
+        return `method-${methodName}`;
+    } else if (classType == "godot") {
+        return `class-${className.toLowerCase()}-method-${methodName.replaceAll("_", "-")}`;
+    } else {
+        return null;
+    }
+}
+
 function stripHeader(xmlStr) {
     return xmlStr.slice(xmlStr.indexOf('?>') + 2);
+}
+
+function processSpecificRefTag(tagType, tagContent) {
+    if (tagType == "method") {
+        const [className, methodName] = tagContent.split(".");
+
+        const classUrl = findClassUrl(className);
+        const methodId = findMethodId(className, methodName);
+        if (classUrl == null || methodId == null) return `${methodName}`;
+
+        return `[${methodName}](${classUrl}#${methodId})`
+    } else {
+        // Just return the content for now.
+        return tagContent;
+    }
 }
 
 function processRefTags(code) {
@@ -72,17 +113,26 @@ function processRefTags(code) {
 
         const firstTagLetter = code[leftIndex + 1];
         if (firstTagLetter == "/") continue; // it's a closing tag.
-        // Let's only allow tags that start with an uppercase letter, for now.
-        if (firstTagLetter.toUpperCase() != firstTagLetter) continue;
 
         const tagContent = code.slice(leftIndex + 1, rightIndex);
+        // This splits tagContent into words, even if there are many spaces between words.
+        const tagContentWords = tagContent.split(" ").filter(word => word.length > 0);
 
-        // Check if this is a class with a documentation page
-        const classUrl = findClassUrl(tagContent);
-        if (classUrl == null) continue;
+        if (tagContentWords.length == 1) {
+            // It could be a class reference tag.
+            // Let's only allow class names to start with an uppercase letter, for now.
+            if (firstTagLetter.toUpperCase() != firstTagLetter) continue;
 
-        // Add the url right after the tag.
-        code = code.slice(0, rightIndex + 1) + `(${classUrl})` + code.slice(rightIndex + 1);
+            // Check if this is a class with a documentation page
+            const classUrl = findClassUrl(tagContent);
+            if (classUrl == null) continue;
+
+            // Add the url right after the tag.
+            code = code.slice(0, rightIndex + 1) + `(${classUrl})` + code.slice(rightIndex + 1);
+        } else if (tagContentWords.length == 2) {
+            const tagOut = processSpecificRefTag(tagContentWords[0], tagContentWords[1]);
+            code = code.slice(0, leftIndex) + tagOut + code.slice(rightIndex + 1);
+        }
     }
 
     return code;
