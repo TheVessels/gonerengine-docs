@@ -39,7 +39,8 @@ jobs:
         run: |
           mkdir -p src/reference
           "$GODOT_EXEC" --headless --path GonerEngine --import
-          "$GODOT_EXEC" --headless --path GonerEngine --doctool $PWD/src/reference --gdscript-docs res://scripts/classes --gdscript-docs res://scripts/autoloads
+          "$GODOT_EXEC" --headless --path GonerEngine --doctool $PWD/src/reference --gdscript-docs res://scripts/classes
+          "$GODOT_EXEC" --headless --path GonerEngine --doctool $PWD/src/reference --gdscript-docs res://scripts/autoloads
       - name: Install dependencies
         run: |
           npm i
