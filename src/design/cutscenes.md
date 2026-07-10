@@ -21,7 +21,7 @@ Of course, we can't really do this in Godot.
 
 ## Deltarune Cutscene Commands
 
-I don't list *every* command here, just the ones of interest.
+We don't list *every* command here, just the ones of interest.
 Also, `time` is almost always in 30FPS frames.
 
 ### `c_sel(actor)`
