@@ -74,10 +74,12 @@ function findClass(className) {
 function findMethodId(className, methodName) {
     const classType = getClassType(className);
 
+    const hyphenatedMethodName = methodName.replaceAll("_", "-");
+
     if (classType == "goner") {
-        return `method-${methodName}`;
+        return `method-${hyphenatedMethodName}`;
     } else if (classType == "godot") {
-        return `class-${className.toLowerCase()}-method-${methodName.replaceAll("_", "-")}`;
+        return `class-${className.toLowerCase()}-method-${hyphenatedMethodName}`;
     } else {
         return null;
     }
