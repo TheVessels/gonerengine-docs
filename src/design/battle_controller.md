@@ -1,6 +1,7 @@
 # Battle Controller
 
-> [!NOTE] Much of the information in this article was based on code from Deltarune Chapter 3.
+> [!NOTE]
+> Much of the information in this article was based on code from Deltarune Chapter 3.
 
 The GonerEngine `BattleController` node and scene aim to replicate the behavior of
 several battle-related tools in Deltarune:
@@ -28,7 +29,8 @@ locations specified by the `heromake` arrays over a duration of **10 frames**.
 On every frame (after the first frame) of this "gliding", the markers make afterimages with a starting opacity of 0.5.
 An afterimage is created for nine frames, so keep that in mind.
 
-> [!NOTE] We believe the hero markers actually move to the "heromake" arrays over a duration
+> [!NOTE]
+> We believe the hero markers actually move to the "heromake" arrays over a duration
 > of 9 frames, and fall just short of the `monstermake` locations.
 > This needs to be verified.
 
