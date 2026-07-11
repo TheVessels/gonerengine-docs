@@ -37,11 +37,24 @@ with a volume of 0.8. All of the hero markers are stopped, and their sprites bec
 (Note that the image speed of these sprites is set to 0.5, so they are actually played at 15 FPS).
 14 frames later, the hero markers and `obj_encounterbasic` are destroyed, and `obj_battlecontroller` is created.
 
-
 After `scr_encountersetup()`, and after `obj_encounterbasic` is created, `scr_battle()` creates "Enemy Markers"
 that are 300 pixels to the right of the location specified by the `monstermake` arrays.
 They move to the location specified by the `monstermake` arrays over a duration of **20 frames**.
 
+## `heromake` and `monstermake` Values
+
+All party members have an x-value of 80.
+If there are three party members, they have y-values of 50, 130, and 210 (note that they are 80 pixels apart).
+If there are two party members, they have y-values of 100 and 180.
+If there is one party member, they have a y-value of 140.
+
+The monsters have x-values of 500, 520, and 540 (note that they are 20 pixels apart, horizontally).
+The monsters have y-values of 40, 130, and 220 (note that they are 90 pixels apart, vertically).
+
+These values are the default values, but can easily be overridden in `scr_encountersetup(enemy_id)`.
+There is a switch statement in the function that acts on the first argument `enemy_id`.
+If the id is zero, it does nothing, but it has many values that correspond to all the different
+enemies in the game.
 
 
 ## `blcon`
