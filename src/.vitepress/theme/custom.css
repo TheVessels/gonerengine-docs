@@ -562,8 +562,8 @@ body {
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-custom-block-font-size: 14px;
-  --vp-custom-block-code-font-size: 13px;
+  --vp-custom-block-font-size: 1em;
+  --vp-custom-block-code-font-size: 16px;
 
   --vp-custom-block-info-border: transparent;
   --vp-custom-block-info-text: var(--vp-c-text-1);
@@ -642,6 +642,10 @@ body {
 
 .label {
   font-size: 1rem !important;
+}
+
+.VPLocalNav .container * {
+  font-size: 16px !important;
 }
 
 /**
