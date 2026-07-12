@@ -405,6 +405,7 @@
 
 html {
   scroll-behavior: smooth;
+  image-rendering: crisp-edges;
 }
 
 :root {
