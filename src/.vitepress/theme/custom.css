@@ -289,7 +289,7 @@
 
   --vp-c-brand-1: var(--c_green);
   --vp-c-brand-2: var(--c_blue);
-  --vp-c-brand-3: var(--vp-c-indigo-3);
+  --vp-c-brand-3: var(--c_teal);
   --vp-c-brand-soft: var(--vp-c-indigo-soft);
 
   /* DEPRECATED: Use `--vp-c-brand-1` instead. */
@@ -558,6 +558,10 @@ body {
   --vp-button-sponsor-active-bg: transparent;
 }
 
+.VPButton {
+  font-size: 16px !important;
+}
+
 /**
  * Component: Custom Block
  * -------------------------------------------------------------------------- */
@@ -695,11 +699,15 @@ body {
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-home-hero-name-color: var(--vp-c-brand-1);
+  --vp-home-hero-name-color: var(--vp-c-brand-3);
   --vp-home-hero-name-background: transparent;
 
   --vp-home-hero-image-background-image: none;
   --vp-home-hero-image-filter: none;
+}
+
+.VPHero .text {
+  font-size: 2em !important;
 }
 
 /**
