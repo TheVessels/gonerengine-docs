@@ -560,6 +560,7 @@ body {
 
 .VPButton {
   font-size: 16px !important;
+  border-radius: 2px !important;
 }
 
 /**
@@ -699,16 +700,30 @@ body {
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-home-hero-name-color: var(--vp-c-brand-3);
-  --vp-home-hero-name-background: transparent;
+  --vp-home-hero-name-color: var(--vp-c-text-1);
+  --vp-home-hero-name-background: var(--c_green);
 
-  --vp-home-hero-image-background-image: none;
+  --vp-home-hero-image-background-image: url("/gonerengine-docs/public/HIM.webp");
   --vp-home-hero-image-filter: none;
 }
 
 .VPHero .text {
+  color: var(--vp-c-text-2);
   font-size: 2em !important;
 }
+
+.VPHero .image-bg {
+  background-position: center;
+  background-size: contain;
+  filter: drop-shadow(0px 0px 32px black) grayscale(0.5);
+}
+
+/* .VPContent.is-home {
+  background-image: url("/gonerengine-docs/public/HIM.webp");
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: luminosity;
+} */
 
 /**
  * Component: Badge
