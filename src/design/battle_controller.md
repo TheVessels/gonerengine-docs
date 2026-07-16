@@ -30,9 +30,9 @@ On every frame (after the first frame) of this "gliding", the markers make after
 An afterimage is created for nine frames, so keep that in mind.
 
 > [!NOTE]
-> We believe the hero markers actually move to the "heromake" arrays over a duration
-> of 9 frames, and fall just short of the `monstermake` locations.
-> This needs to be verified.
+> The hero markers really DO move over a duration of 10 frames!
+> And they are EXACTLY at their `heromake` positions by the 10th Step event.
+> For more information about this, check out [GameMaker Object Movement](gamemaker_quirks#gamemaker-object-movement).
 
 On the 10th frame, `snd_impact` is played with a volume of 0.7, and `snd_weaponpull_fast` is played
 with a volume of 0.8. All of the hero markers are stopped, and their sprites become "battle intro" sprites.
