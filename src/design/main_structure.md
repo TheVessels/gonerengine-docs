@@ -21,7 +21,8 @@ These are the entire point of **BorderAndGame**. These are the nodes where all t
 As in, when changing the border, it is the node where the border being replaced goes before fading away and being fully replaced
 by the border now set in the BorderTexture node (refer to [BorderNode](/reference/BorderNode)).
 
-***Note:** The actual logic for all of this is in the Main scene's root node.*
+> [!NOTE]
+> The actual logic for all of this is in the Main scene's root node.
 
 ## GameSubViewport
 
