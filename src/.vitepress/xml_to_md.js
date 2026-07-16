@@ -205,6 +205,56 @@ function parseMethods(methods) {
     return arr;
 }
 
+function isEnum(constant) {
+    return typeof(constant.attributes.enum) == "string";
+}
+
+function parseEnum(enumElem, enumDict) {
+    const enumName = enumElem.attributes.enum;
+
+    if (!(enumName in enumDict)) {
+        enumDict[enumName] = [];
+    }
+
+    enumDict[enumName].push({
+        name: enumElem.attributes.name,
+        value: parseInt(enumElem.attributes.value)
+    });
+}
+
+function parseConstant(constantElem) {
+    return {
+        name: constantElem.attributes.name,
+        type: constantElem.attributes.type,
+        value: constantElem.attributes.value
+    };
+}
+
+function parseConstantsAndEnums(constantsElem) {
+    const enumDict = {};
+    const constants = [];
+
+    for (const child of constantsElem.children) {
+        if (child.type != "element") continue;
+
+        if (isEnum(child)) {
+            parseEnum(child, enumDict);
+        } else {
+            constants.push(parseConstant(child));
+        }
+    }
+
+    const enums = [];
+    for (const key in enumDict) {
+        enums.push({
+            name: key,
+            values: enumDict[key]
+        });
+    }
+
+    return [constants, enums];
+}
+
 /**
  * 
  * @param {string} xmlStr 
@@ -231,6 +281,10 @@ function xmlToMarkdown(xmlStr, template) {
                 break;
             case "methods":
                 view.methods = parseMethods(child);
+            case "constants":
+                const [constants, enums] = parseConstantsAndEnums(child);
+                view.constants = constants;
+                view.enums = enums;
                 break;
         }
     }
