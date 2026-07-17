@@ -461,7 +461,7 @@ body {
  * -------------------------------------------------------------------------- */
 
 :root {
-  --vp-code-line-height: 1.7;
+  --vp-code-line-height: 1.2;
   --vp-code-font-size: 18px;
   --vp-code-color: var(--vp-c-brand-1);
   --vp-code-link-color: var(--vp-c-brand-1);

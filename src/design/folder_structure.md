@@ -26,7 +26,18 @@ Folders that might need clarification have comments added for them.
 |-- ui/
 | shaders/
 | sounds/
+|-- ui/
+|-- voice/
 | sprites/
+|-- actors/
+|-- battle/
+|-- borders/
+|-- class_icons/
+|-- misc/
+|-- overworld/
+|-- souls/
+|-- tiles/
+|-- ui/
 | themes/ # UI Themes
 | tilesets/
 ```
