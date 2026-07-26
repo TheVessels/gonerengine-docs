@@ -6,10 +6,6 @@ But it still has some quirks.
 
 ## Gamemaker Rectangle Drawing
 
-> [!NOTE]
-> This might only be for macOS, and might work differently on Windows.
-> I need to check.
-
 Drawing rectangles in GameMaker is a little bit weird.
 In most graphics libraries and engines, a rectangle
 is defined by its x, y, width, and height.
@@ -21,6 +17,11 @@ and to find the height of the rectangle, you have to do (y2 - y1) + 1.
 It seems that GameMaker's (x2, y2) refer to the TOP-LEFT CORNER of the
 BOTTOM-RIGHT PIXEL of the rectangle. This means that
 the TRUE bottom-right point of the rectangle is at (x2 + 1, y2 + 1).
+
+This actually does not happen by default in the latest version of GameMaker.
+In it, draw_rectangle always draws a rectangle with a width of x2-x1 and a height of y2-y1.
+This is because the "quirk" was [removed](https://manual.gamemaker.io/monthly/en/Settings/Game_Options.htm) in GameMaker 2024.14.
+To add this quirk back, check the "Legacy primitive drawing behaviour" option in GameMaker's Game Options.
 
 ## GameMaker Object "Movement"
 
