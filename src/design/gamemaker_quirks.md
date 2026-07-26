@@ -19,8 +19,8 @@ top-left corner (x1, y1) and its bottom-right corner (x2, y2).
 To find the width of the rectangle, you have to do (x2 - x1) + 1,
 and to find the height of the rectangle, you have to do (y2 - y1) + 1.
 It seems that GameMaker's (x2, y2) refer to the TOP-LEFT CORNER of the
-pixel of the rectangle that is its bottom-right corner, so
-the TRUE top-left point of the rectangle is at (x2 + 1, y2 + 1).
+BOTTOM-RIGHT PIXEL of the rectangle. This means that
+the TRUE bottom-right point of the rectangle is at (x2 + 1, y2 + 1).
 
 ## GameMaker Object "Movement"
 
