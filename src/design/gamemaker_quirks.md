@@ -4,6 +4,24 @@ When we first started to use GameMaker, we thought it was an extremely weird eng
 Now, we know that it's a lot better than we initially gave it credit for.
 But it still has some quirks.
 
+## Gamemaker Rectangle Drawing
+
+> [!NOTE]
+> This might only be for macOS, and might work differently on Windows.
+> I need to check.
+
+Drawing rectangles in GameMaker is a little bit weird.
+In most graphics libraries and engines, a rectangle
+is defined by its x, y, width, and height.
+In GameMaker, however, a rectangle is defined by its
+top-left corner (x1, y1) and its bottom-right corner (x2, y2).
+
+To find the width of the rectangle, you have to do (x2 - x1) + 1,
+and to find the height of the rectangle, you have to do (y2 - y1) + 1.
+It seems that GameMaker's (x2, y2) refer to the TOP-LEFT CORNER of the
+pixel of the rectangle that is its bottom-right corner, so
+the TRUE top-left point of the rectangle is at (x2 + 1, y2 + 1).
+
 ## GameMaker Object "Movement"
 
 GameMaker's [Event Order docs](https://manual.gamemaker.io/monthly/en/The_Asset_Editors/Object_Properties/Event_Order.htm)
