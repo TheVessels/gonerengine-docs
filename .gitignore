@@ -5,3 +5,6 @@ src/.vitepress/dist
 src/reference/*.md
 src/reference
 godot-docs
+.DS_Store
+**/.DS_Store
+

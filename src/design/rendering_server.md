@@ -5,7 +5,7 @@ RenderingServer has many different primitives, so it can
 seem complex at times.
 This page tries to explain useful things about RenderingServer.
 
-# The RID
+## The RID
 
 Everything in RenderingServer functions is represented
 with a "Resource ID" (RID).
@@ -28,7 +28,7 @@ Viewports, canvases, and canvas items
 can be created with `RenderingServer.typename_create()`,
 where typename is the name of the thing you want to create.
 
-# Viewport, Canvas, and CanvasItem
+## Viewport, Canvas, and CanvasItem
 
 These three things all have different uses.
 
@@ -49,7 +49,7 @@ Canvas items can be attached to canvases with
 Canvas items can have shaders by using
 `RenderingServer.canvas_item_set_material(canvas_item, material)`.
 
-# Example
+## Example
 
 Creating
 
