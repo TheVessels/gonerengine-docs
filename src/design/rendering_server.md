@@ -101,7 +101,7 @@ var texture: RID = RenderingServer.viewport_get_texture(viewport)
 
 # The entire texture will be drawn
 # to a rectangle with width 640 and height 480
-RenderingServer.canvas_item_add_texture(
+RenderingServer.canvas_item_add_texture_rect(
     canvas_item, Rect2(0, 0, 640, 480), texture
 )
 ```
@@ -113,7 +113,7 @@ var texture: RID = RenderingServer.viewport_get_texture(viewport)
 
 # A 100x100 region of the viewport with top-left corner at (50, 50)
 # will be drawn to a rectangle with width 640 and height 480
-RenderingServer.canvas_item_add_texture(
+RenderingServer.canvas_item_add_texture_rect_region(
     canvas_item, Rect2(0, 0, 640, 480), texture, Rect2(50, 50, 100, 100)
 )
 ```
