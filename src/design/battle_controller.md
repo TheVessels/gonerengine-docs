@@ -43,6 +43,20 @@ After `scr_encountersetup()`, and after `obj_encounterbasic` is created, `scr_ba
 that are 300 pixels to the right of the location specified by the `monstermake` arrays.
 They move to the location specified by the `monstermake` arrays over a duration of **20 frames**.
 
+## The Battle Controller Menu
+
+The part of the menu you are currently in, is determined by the
+`global.bmenuno`, `global.bmenucoord`, and `global.charturn` variables.
+`global.charturn` is the index of the character that is currently selected,
+so in a battle of Kris, Susie, and Ralsei, if Ralsei is currently selected, then
+`global.charturn` is equal to 3.
+
+`global.bmenucoord` is a 2D array.
+`global.bmenucoord[0][global.charturn]` is the index of the currently selected button
+for the current character.
+For example, if Susie's "Item" button is currently selected, then
+`global.bmenucoord[0][1] == 2` (since the Item button is the 3rd button, so it is at index 2).
+
 ## `heromake` and `monstermake` Values
 
 All party members have an x-value of 80.
@@ -58,9 +72,20 @@ There is a switch statement in the function that acts on the first argument `ene
 If the id is zero, it does nothing, but it has many values that correspond to all the different
 enemies in the game.
 
-
 ## `blcon`
 
 In Deltarune battles, there are "speech bubbles".
 These are called `obj_battleblcon` and are created with `scr_blcon(x, y, type).`
 
+## GonerEngine Design of Battle Controller
+
+In GonerEngine, `BattleController` is a class meant to handle ALL of the needs of battles.
+
+This is a list of every possible action a party member could take in a battle:
+- Fight (enemy)
+- Act (enemy, act)
+- Item (item, recipient)
+- Spare (enemy)
+- Defend
+After all party members have selected an action, their turn starts being executed,
+looking at each action and going from left to right.
